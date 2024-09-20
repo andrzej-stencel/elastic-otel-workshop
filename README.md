@@ -49,7 +49,7 @@ Worth doing before the workshop to save time.
 
 ## Scenarios
 
-All the scenarios assume you have downloaded the Elastic Agent, unpacked it and entered the unpacked directory, as described in the [Prepare](#prepare) section above.
+All the scenarios assume you have downloaded the Elastic Agent, unpacked it and entered the unpacked directory, as described in the [Preparation](#preparation) section above.
 
 ## Collect logs from file
 
