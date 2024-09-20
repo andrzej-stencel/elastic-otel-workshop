@@ -146,6 +146,12 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - When to run as root? This isn't specified in docs, although would probably be useful (contributions welcome!).
   Most of the scrapers read some files in `/proc`. You need to run as root if the files are only readable by root.
 
+### Modifying telemetry
+
+- Use [Transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md) to modify telemetry.
+
+- Use [Filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md) to filter out telemetry.
+
 ### Other
 
 - ? Use builder to build a custom distro
