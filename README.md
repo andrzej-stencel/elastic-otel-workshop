@@ -51,6 +51,8 @@ Worth doing before the workshop to save time.
 
 All the scenarios assume you have downloaded the Elastic Agent, unpacked it and entered the unpacked directory, as described in the [Preparation](#preparation) section above.
 
+Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, and a final version of the configuration file, e.g. `logs-from-file-final.yaml`.
+
 ## Collect logs from file
 
 - Look at the file [./scenarios/logs-from-file.yaml](./scenarios/logs-from-file.yaml).
