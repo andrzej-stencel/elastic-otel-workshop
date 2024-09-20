@@ -53,7 +53,7 @@ All the scenarios assume you have downloaded the Elastic Agent, unpacked it and 
 
 Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, and a final version of the configuration file, e.g. `logs-from-file-final.yaml`.
 
-## Collect logs from file
+### Collect logs from file
 
 - Look at the file [./scenarios/logs-from-file.yaml](./scenarios/logs-from-file.yaml).
   - [Filelog receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md)
@@ -79,7 +79,7 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 
 - ⏯️ Use telemetrygen to generate basic telemetry for testing
 
-## Send the logs to Elasticsearch
+### Send the logs to Elasticsearch
 
 - Look at the file [./scenarios/logs-into-elasticsearch.yaml](./scenarios/logs-into-elasticsearch.yaml). It is the same as `logs-from-file-final.yaml`, with Debug exporter's verbosity set to `normal`.
 
@@ -105,7 +105,7 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 
 - Change `mapping::mode` to `ecs`, re-run the collector, see how the logs structure differs.
 
-## Keeping track of sent logs
+### Keeping track of sent logs
 
 - Notice how every time we re-run the collector, the same logs are re-collected.
   This is great for testing, but in production scenarios, we'd want the collector to pick up where it started from on restart, instead of re-reading the whole file again.
@@ -127,7 +127,7 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 
 - Delete the file and re-run the collector. The logs will be re-collected again.
 
-## Collect host metrics
+### Collect host metrics
 
 - Run the collector with the barebones [Host Metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md) configuration: `./otelcol ../scenarios/logs-keep-track.yaml`
 
@@ -146,12 +146,12 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - When to run as root? This isn't specified in docs, although would probably be useful (contributions welcome!).
   Most of the scrapers read some files in `/proc`. You need to run as root if the files are only readable by root.
 
-## Other
+### Other
 
 - ? Use builder to build a custom distro
 
 - ? Run otelcol as systemctl service
 
-## Elastic onboarding - collect logs and metrics from host into Elasticsearch
+### Elastic onboarding - collect logs and metrics from host into Elasticsearch
 
 Essentially follow the steps described in this blog post: <https://andrzej-stencel.github.io/2024/08/28/elastic-distro-with-elastic-cloud.html>
