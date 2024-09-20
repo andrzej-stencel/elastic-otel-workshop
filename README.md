@@ -83,7 +83,7 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 
 - Look at the file [./scenarios/logs-into-elasticsearch.yaml](./scenarios/logs-into-elasticsearch.yaml). It is the same as `logs-from-file-final.yaml`, with Debug exporter's verbosity set to `normal`.
 
-- Add [Elsaticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md) to the list of exporters. This involves adding a definition of the exporter in the `exporters` section of the config, as well as adding the exporter to the list of exporters in the pipeline at `service::pipelines::logs::exporters`.
+- Add [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md) to the list of exporters. This involves adding a definition of the exporter in the `exporters` section of the config, as well as adding the exporter to the list of exporters in the pipeline at `service::pipelines::logs::exporters`.
 
 - Let's start with setting connection properties, to see what happens. Set `endpoint` to `http://localhost:1234` or some other URL that does not point to Elasticsearch.
 
