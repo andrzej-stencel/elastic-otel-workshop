@@ -4,12 +4,13 @@
 
 Worth doing before the workshop to save time.
 
-1. Prepare an Elasticsearch instance.
+1. Clone this repository to have easy access to configuration files.
 
-   - Go to <https://cloud.elastic.co/>, log in via Google with your Elastic account and create a hosted deployment (needs to be at least 8.15.0 or higher, preferably latest version) or a serverless deployment.
-     Store the password to the instance when offered, so that you can use it later.
-
-   - Alternatively, use a local or any other Elasticsearch instance. Any Elasticsearch instance will do, as long as it is version at least 8.15.0 or higher.
+   ```shell
+   git clone git@github.com:andrzej-stencel/elastic-otel-workshop.git
+   cd elastic-otel-workshop
+   export OTEL_WORKSHOP_DIR=$PWD
+   ```
 
 1. Download the Elastic Agent binary release. The scenario descriptions below assume you've downloaded it inside the OTel Workshop directory.
 
@@ -39,13 +40,13 @@ Worth doing before the workshop to save time.
 
       Note that Windows is currenty not officially supported for the Tech Preview.
 
-1. Clone this repository to have easy access to configuration files.
+1. Prepare an Elasticsearch instance.
 
-   ```shell
-   git clone git@github.com:andrzej-stencel/elastic-otel-workshop.git
-   cd elastic-otel-workshop
-   export OTEL_WORKSHOP_DIR=$PWD
-   ```
+   - Go to <https://cloud.elastic.co/>, log in via Google with your Elastic account and create a hosted deployment (needs to be at least 8.15.0 or higher, preferably latest version) or a serverless deployment.
+     Store the password to the instance when offered, so that you can use it later.
+
+   - Alternatively, use a local or any other Elasticsearch instance. Any Elasticsearch instance will do, as long as it is version at least 8.15.0 or higher.
+
 
 ## Scenarios
 
