@@ -1,0 +1,4 @@
+2024-05-27 01:02:03 INFO Here's a single line log
+2024-05-27 02:03:04 ERROR This is an error with the following stack trace
+      stack trace line 1
+        stack trace line 2

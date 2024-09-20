@@ -1,0 +1,20 @@
+exporters:
+  debug:
+    use_internal_logger: false
+    verbosity: normal
+receivers:
+  hostmetrics:
+    collection_interval: 5s
+    scrapers:
+      cpu:
+        metrics:
+          system.cpu.utilization:
+            enabled: true
+      load:
+service:
+  pipelines:
+    metrics:
+      exporters:
+        - debug
+      receivers:
+        - hostmetrics

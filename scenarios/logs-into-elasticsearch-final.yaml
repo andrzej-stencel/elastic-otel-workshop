@@ -1,0 +1,33 @@
+exporters:
+  debug:
+    use_internal_logger: false
+    verbosity: normal
+  elasticsearch/hosted:
+    endpoint: ${env:ELASTIC_HOSTED_ENDPOINT}
+    flush:
+      interval: 100ms
+    mapping:
+      mode: ecs
+    password: ${env:ELASTIC_PASSWORD}
+    user: elastic
+  elasticsearch/serverless:
+    api_key: ${env:ELASTIC_API_KEY}
+    endpoint: ${env:ELASTIC_SERVERLESS_ENDPOINT}
+    flush:
+      interval: 100ms
+    mapping:
+      mode: ecs
+receivers:
+  filelog:
+    include:
+      - ${env:OTEL_WORKSHOP_DIR}/scenarios/simple-logs.log
+    start_at: beginning
+service:
+  pipelines:
+    logs:
+      exporters:
+        - debug
+        - elasticsearch/hosted
+        - elasticsearch/serverless
+      receivers:
+        - filelog

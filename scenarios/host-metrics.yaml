@@ -1,0 +1,13 @@
+exporters:
+  debug:
+    use_internal_logger: false
+    verbosity: normal
+receivers:
+  hostmetrics:
+service:
+  pipelines:
+    metrics:
+      exporters:
+        - debug
+      receivers:
+        - hostmetrics

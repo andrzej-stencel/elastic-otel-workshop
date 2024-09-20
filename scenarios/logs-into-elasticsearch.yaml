@@ -1,0 +1,16 @@
+exporters:
+  debug:
+    use_internal_logger: false
+    verbosity: normal
+receivers:
+  filelog:
+    include:
+      - ${env:OTEL_WORKSHOP_DIR}/scenarios/simple-logs.log
+    start_at: beginning
+service:
+  pipelines:
+    logs:
+      exporters:
+        - debug
+      receivers:
+        - filelog

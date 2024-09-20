@@ -1,0 +1,13 @@
+exporters:
+  debug:
+receivers:
+  filelog:
+    include:
+      - simple-logs.log
+service:
+  pipelines:
+    logs:
+      exporters:
+        - debug
+      receivers:
+        - filelog

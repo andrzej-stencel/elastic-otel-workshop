@@ -1,0 +1,3 @@
+2024-05-27 01:02:03 INFO Here's a single line information log
+2024-05-27 02:03:04 ERROR This is an error!
+2024-05-27 03:04:05 WARN Warning warning warning
