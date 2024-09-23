@@ -35,13 +35,22 @@ On Windows, use Git Bash or another Linux-emulating shell.
 
       - Windows (x86_64):
 
-      ```shell
-      curl -LO https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.1-windows-x86_64.zip
-      unzip elastic-agent-8.15.*.zip
-      cd elastic-agent-8.15.*/
-      ```
+        Note that Windows is currenty officially not supported for the Tech Preview.
+        The Windows build of the Elastic Agent 8.15 binary does not include the `otel` command.
+        You can run the below scenarios using the [upstream OpenTelemetry Collector Contrib binary](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/).
+        The below commands download the latest binary for Windows x86_64, unpack it and put it in a subdirectory
+        as `otelcol` so that the execution command to run is the same as that for Elastic Agent Otel: `./otelcol`.
 
-      Note that Windows is currenty not officially supported for the Tech Preview.
+      ```shell
+      # curl -LO https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.1-windows-x86_64.zip
+      # unzip elastic-agent-8.15.*.zip
+      # cd elastic-agent-8.15.*/
+      curl -LO https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.109.0/otelcol-contrib_0.109.0_windows_amd64.tar.gz
+      mkdir otelcol-contrib_0.109.0_windows_amd64
+      tar zxvf otelcol-contrib_*.tar.gz otelcol-contrib.exe 
+      mv otelcol-contrib.exe otelcol-contrib_0.109.0_windows_amd64/otelcol
+      cd otelcol-contrib_0.109.0_windows_amd64
+      ```
 
 1. Prepare an Elasticsearch instance.
 

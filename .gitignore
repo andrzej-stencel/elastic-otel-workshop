@@ -1,1 +1,2 @@
-elastic-agent-*
+/elastic-agent-*
+/otelcol-contrib_*
