@@ -35,8 +35,9 @@ On Windows, use Git Bash or another Linux-emulating shell.
 
       - Windows (x86_64):
 
-        Note that Windows is currenty officially not supported for the Tech Preview.
-        The Windows build of the Elastic Agent 8.15 binary does not include the `otel` command.
+        Note that Windows is currenty officially *not supported* for the Tech Preview.
+        *The Windows build of the Elastic Agent 8.15 binary does not include the `otel` command.*
+
         You can run the below scenarios using the [upstream OpenTelemetry Collector Contrib binary](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/).
         The below commands download the latest binary for Windows x86_64, unpack it and put it in a subdirectory
         as `otelcol` so that the execution command to run is the same as that for Elastic Agent Otel: `./otelcol`.
