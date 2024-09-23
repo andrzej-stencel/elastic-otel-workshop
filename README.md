@@ -92,7 +92,7 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 
 - Add `start_at: beginning` to Filelog receiver's config
 
-- Output from Debug exporter is available, but very basic. Change `verbosity` to `normal`.
+- Output from Debug exporter is available, but very basic. Set `verbosity` to `normal` in the exporter's configuration.
 
 - Add `use_internal_logger: false` to Debug exporter's config to clean up the output.
 
@@ -221,6 +221,8 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 ### Other
 
 - ⏯️ Use telemetrygen to generate basic telemetry for testing
+
+- Run the collector in Kubernetes
 
 - ? Use builder to build a custom distro
 
