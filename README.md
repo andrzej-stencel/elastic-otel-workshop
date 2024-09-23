@@ -74,6 +74,9 @@ All the scenarios assume you have downloaded the Elastic Agent, unpacked it and 
 
 Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, and a final version of the configuration file, e.g. `logs-from-file-final.yaml`.
 
+Note that after updating the configuration file, you need to stop the collector process with `Ctrl+C` and re-run it in order to load the new config.
+The OTel Collector does not support hot reloading of configuration.
+
 ### Collect logs from file
 
 - Look at the file [./scenarios/logs-from-file.yaml](./scenarios/logs-from-file.yaml).
