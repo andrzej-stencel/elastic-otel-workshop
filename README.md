@@ -122,7 +122,7 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - Notice how every time we re-run the collector, the same logs are re-collected.
   This is great for testing, but in production scenarios, we'd want the collector to pick up where it started from on restart, instead of re-reading the whole file again.
 
-- Run and re-run `./otelcol ../scenarios/logs-keep-track.yaml`. Notice how the same logs appear in the Debug exporter's output every time the collector is run.
+- Run and re-run `./otelcol --config ../scenarios/logs-keep-track.yaml`. Notice how the same logs appear in the Debug exporter's output every time the collector is run.
 
 - Add the [File Storage extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/storage/filestorage/README.md) to the configuration.
   - Create `extensions::file_storage:` entry to define the extension with the default configuration
@@ -141,13 +141,15 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 
 ### Collect host metrics
 
-- Run the collector with the barebones [Host Metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md) configuration: `./otelcol ../scenarios/logs-keep-track.yaml`
+- Run the collector with the barebones [Host Metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md) configuration: `./otelcol --config ../scenarios/host-metrics.yaml`.
 
 - Check [docs](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md) for what scrapers are available and what metrics they emit. Note operating system exclusions.
 
 - Add `load` scraper, run the collector. You should see three time series.
 
 - Add `cpu` scraper. You should see multiple time series for each logical CPU.
+  - The docs describe `cpu` metrics as not working on MacOS, but you can see they work fine with the Elastic Agent OTel.
+    This wouldn't work with the upstream OpenTelemetry Collector Contrib release.
 
 - Enable the optional `system.cpu.utilization` metric for the `cpu` scraper, re-run the collector.
 
@@ -155,7 +157,16 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 
 - Change `collection_interval` to `5s` to not have to wait the default `1m` for next scrape.
 
-- When to run as root? This isn't specified in docs, although would probably be useful (contributions welcome!).
+- (Optional) Add `process` scraper.
+  - Observe errors.
+  - Set all the `mute_...` options to `true`.
+  - Observe errors.
+  - Run the agent as root: `sudo ./otelcol --config ../scenarios/host-metrics.yaml`.
+  - Limit the `process` scraper to only observe `elastic-agent` processes.
+  - Without `sudo`, you only get the metrics for the currently running process `./elastic-agent otel`.
+  - With `sudo`, you only get the metrics for the globally installed Elastic Agent.
+
+- When to run as root? This isn't specified in docs, although it would probably be useful (contributions welcome!).
   Most of the scrapers read some files in `/proc`. You need to run as root if the files are only readable by root.
 
 ### Modifying telemetry
