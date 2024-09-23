@@ -71,22 +71,22 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - Run `./otelcol --config ../scenarios/logs-from-file.yaml`
 
 - Logs from file not available in collector's output. There's a warning: "no files matched the configured criteria"
+  - The path `simple-logs.yaml` used in Filelog receiver's `include` config is relative to the configuration file,
+    but the collector resolves file paths relative to the working directory.
 
-- Fix the path
+- Fix the path by prepending the file's full path to it. You can use environment variables like `${env:HOME}` or `${env:OTEL_WORKSHOP_DIR}` as set earlier.
 
 - The warning is gone, but still logs from the file not available in the collectors output.
 
 - Add `start_at: beginning` to Filelog receiver's config
 
-- Output from Debug exporter is available, but very basic. Change `verbosity` to `normal`, `detailed`.
+- Output from Debug exporter is available, but very basic. Change `verbosity` to `normal`.
 
-- Add `use_internal_logger: false` to Debug exporter's config to clean up the output
+- Add `use_internal_logger: false` to Debug exporter's config to clean up the output.
 
-- Change `verbosity` to `detailed`, analyze the output.
+- Change `verbosity` to `detailed`, analyze the output. It logs all all the log records' fields, as described in [Logs Data Model](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#log-and-event-record-definition).
 
-- ⏯️ multiline logs
-
-- ⏯️ Use telemetrygen to generate basic telemetry for testing
+- [Multiline logs](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md#multiline-configuration)
 
 ### Send the logs to Elasticsearch
 
@@ -162,6 +162,8 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - Use [Filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md) to filter out telemetry.
 
 ### Other
+
+- ⏯️ Use telemetrygen to generate basic telemetry for testing
 
 - ? Use builder to build a custom distro
 
