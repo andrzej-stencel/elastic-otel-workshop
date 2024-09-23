@@ -87,7 +87,7 @@ The OTel Collector does not support hot reloading of configuration.
 - Run `./otelcol --config ../scenarios/logs-from-file.yaml`
 
 - Logs from file not available in collector's output. There's a warning: "no files matched the configured criteria"
-  - The path `simple-logs.yaml` used in Filelog receiver's `include` config is relative to the configuration file,
+  - The path `simple-logs.log` used in Filelog receiver's `include` config is relative to the configuration file,
     but the collector resolves file paths relative to the working directory.
 
 - Fix the path by prepending the file's full path to it. You can use environment variables like `${env:HOME}` or `${env:OTEL_WORKSHOP_DIR}` as set earlier.
