@@ -47,7 +47,7 @@ On Windows, use Git Bash or another Linux-emulating shell.
       # cd elastic-agent-8.15.*/
       curl -LO https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.109.0/otelcol-contrib_0.109.0_windows_amd64.tar.gz
       mkdir otelcol-contrib_0.109.0_windows_amd64
-      tar zxvf otelcol-contrib_*.tar.gz otelcol-contrib.exe 
+      tar zxvf otelcol-contrib_*.tar.gz otelcol-contrib.exe
       mv otelcol-contrib.exe otelcol-contrib_0.109.0_windows_amd64/otelcol
       cd otelcol-contrib_0.109.0_windows_amd64
       ```
