@@ -47,15 +47,7 @@ Worth doing before the workshop to save time.
 
    - Alternatively, use a local or any other Elasticsearch instance. Any Elasticsearch instance will do, as long as it is version at least 8.15.0 or higher.
 
-
-## Scenarios
-
-All the scenarios assume you have downloaded the Elastic Agent, unpacked it and entered the unpacked directory, as described in the [Preparation](#preparation) section above.
-
-Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, and a final version of the configuration file, e.g. `logs-from-file-final.yaml`.
-
-
-### Basic of the OpenTelemetry Collector
+## Basic of the OpenTelemetry Collector
 
 - [Pipelines, receivers, processors, exporters](https://opentelemetry.io/docs/collector/architecture/)
   - This doesn't mention [connectors](https://opentelemetry.io/docs/collector/building/connector/#what-is-a-connector)
@@ -63,6 +55,12 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - [Configuration](https://opentelemetry.io/docs/collector/configuration/)
 
 - [Troubleshooting](https://opentelemetry.io/docs/collector/troubleshooting/)
+
+## Scenarios
+
+All the scenarios assume you have downloaded the Elastic Agent, unpacked it and entered the unpacked directory, as described in the [Preparation](#preparation) section above.
+
+Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, and a final version of the configuration file, e.g. `logs-from-file-final.yaml`.
 
 ### Collect logs from file
 
