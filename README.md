@@ -3,6 +3,7 @@
 ## Preparation
 
 Worth doing before the workshop to save time.
+On Windows, use Git Bash or another Linux-emulating shell.
 
 1. Clone this repository to have easy access to configuration files.
 
@@ -36,6 +37,8 @@ Worth doing before the workshop to save time.
 
       ```shell
       curl -LO https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.1-windows-x86_64.zip
+      unzip elastic-agent-8.15.*.zip
+      cd elastic-agent-8.15.*/
       ```
 
       Note that Windows is currenty not officially supported for the Tech Preview.
