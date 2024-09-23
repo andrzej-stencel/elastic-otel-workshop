@@ -98,8 +98,6 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 
 - Change `verbosity` to `detailed`, analyze the output. It logs all all the log records' fields, as described in [Logs Data Model](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#log-and-event-record-definition).
 
-- [Multiline logs](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md#multiline-configuration)
-
 ### Send the logs to Elasticsearch
 
 - Look at the file [./scenarios/logs-into-elasticsearch.yaml](./scenarios/logs-into-elasticsearch.yaml). It is the same as `logs-from-file-final.yaml`, with Debug exporter's verbosity set to `normal`.
@@ -219,6 +217,8 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - Any suggestions of scenarios?
 
 ### Other
+
+- [Multiline logs](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md#multiline-configuration)
 
 - ⏯️ Use telemetrygen to generate basic telemetry for testing
 
