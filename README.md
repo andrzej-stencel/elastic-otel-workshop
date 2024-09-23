@@ -80,7 +80,7 @@ The OTel Collector does not support hot reloading of configuration.
 
 ### Collect logs from file
 
-- Look at the file [./scenarios/logs-from-file.yaml](./scenarios/logs-from-file.yaml).
+- Starting file: [./scenarios/logs-from-file.yaml](./scenarios/logs-from-file.yaml).
   - [Filelog receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md)
   - [Debug exporter](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md)
 
@@ -102,9 +102,13 @@ The OTel Collector does not support hot reloading of configuration.
 
 - Change `verbosity` to `detailed`, analyze the output. It logs all all the log records' fields, as described in [Logs Data Model](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#log-and-event-record-definition).
 
+- Final file: [./scenarios/logs-from-file-final.yaml](./scenarios/logs-from-file-final.yaml).
+
 ### Send the logs to Elasticsearch
 
-- Look at the file [./scenarios/logs-into-elasticsearch.yaml](./scenarios/logs-into-elasticsearch.yaml). It is the same as `logs-from-file-final.yaml`, with Debug exporter's verbosity set to `normal`.
+- Starting file: [./scenarios/logs-into-elasticsearch.yaml](./scenarios/logs-into-elasticsearch.yaml).
+
+  It is the same as `logs-from-file-final.yaml`, with Debug exporter's verbosity set to `normal`.
 
 - Add [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md) to the list of exporters. This involves adding a definition of the exporter in the `exporters` section of the config, as well as adding the exporter to the list of exporters in the pipeline at `service::pipelines::logs::exporters`.
 
@@ -134,12 +138,17 @@ The OTel Collector does not support hot reloading of configuration.
 
 - Change `mapping::mode` to `ecs`, re-run the collector, see how the logs structure differs.
 
+- Final file: [./scenarios/logs-into-elasticsearch-final.yaml](./scenarios/logs-into-elasticsearch-final.yaml).
+
 ### Keeping track of sent logs
+
+- Starting file: [./scenarios/logs-keep-track.yaml](./scenarios/logs-keep-track.yaml).
 
 - Notice how every time we re-run the collector, the same logs are re-collected.
   This is great for testing, but in production scenarios, we'd want the collector to pick up where it started from on restart, instead of re-reading the whole file again.
 
-- Run and re-run `./otelcol --config ../scenarios/logs-keep-track.yaml`. Notice how the same logs appear in the Debug exporter's output every time the collector is run.
+- Run, stop, and re-run `./otelcol --config ../scenarios/logs-keep-track.yaml`.
+  Notice how the same logs appear in the Debug exporter's output every time the collector is run.
 
 - Add the [File Storage extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/storage/filestorage/README.md) to the configuration.
   - Create `extensions::file_storage:` entry to define the extension with the default configuration
@@ -156,7 +165,11 @@ The OTel Collector does not support hot reloading of configuration.
 
 - Delete the file and re-run the collector. The logs will be re-collected again.
 
+- Final file: [./scenarios/logs-keep-track-final.yaml](./scenarios/logs-keep-track-final.yaml).
+
 ### Collect host metrics
+
+- Starting file: [./scenarios/host-metrics.yaml](./scenarios/host-metrics.yaml).
 
 - Run the collector with the barebones [Host Metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md) configuration: `./otelcol --config ../scenarios/host-metrics.yaml`.
 
@@ -185,6 +198,8 @@ The OTel Collector does not support hot reloading of configuration.
 
 - When to run as root? This isn't specified in docs, although it would probably be useful (contributions welcome!).
   Most of the scrapers read some files in `/proc`. You need to run as root if the files are only readable by root.
+
+- Final file: [./scenarios/host-metrics-final.yaml](./scenarios/host-metrics-final.yaml).
 
 ### Modifying logs
 
@@ -224,7 +239,7 @@ The OTel Collector does not support hot reloading of configuration.
 
 - [Multiline logs](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md#multiline-configuration)
 
-- ⏯️ Use telemetrygen to generate basic telemetry for testing
+- Use telemetrygen to generate basic telemetry for testing
 
 - Run the collector in Kubernetes
 
