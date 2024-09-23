@@ -54,6 +54,16 @@ All the scenarios assume you have downloaded the Elastic Agent, unpacked it and 
 
 Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, and a final version of the configuration file, e.g. `logs-from-file-final.yaml`.
 
+
+### Basic of the OpenTelemetry Collector
+
+- [Pipelines, receivers, processors, exporters](https://opentelemetry.io/docs/collector/architecture/)
+  - This doesn't mention [connectors](https://opentelemetry.io/docs/collector/building/connector/#what-is-a-connector)
+
+- [Configuration](https://opentelemetry.io/docs/collector/configuration/)
+
+- [Troubleshooting](https://opentelemetry.io/docs/collector/troubleshooting/)
+
 ### Collect logs from file
 
 - Look at the file [./scenarios/logs-from-file.yaml](./scenarios/logs-from-file.yaml).
