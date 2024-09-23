@@ -54,7 +54,7 @@ On Windows, use Git Bash or another Linux-emulating shell.
 
 1. Prepare an Elasticsearch instance.
 
-   - Go to <https://cloud.elastic.co/>, log in via Google with your Elastic account and create a hosted deployment (needs to be at least 8.15.0 or higher, preferably latest version) or a serverless deployment.
+   - Go to <https://cloud.elastic.co/>, log in via Google with your Elastic account and create a hosted deployment (needs to be at least 8.15.0 or higher, preferably latest version) or a serverless deployment ("Elastic for Observability" type).
      Store the password to the instance when offered, so that you can use it later.
 
    - Alternatively, use a local or any other Elasticsearch instance. Any Elasticsearch instance will do, as long as it is version at least 8.15.0 or higher.
@@ -113,14 +113,20 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - Stop the collector. Add `flush::interval: 100ms` to the Elasticsearch exporter's configuration. Now we're getting errors right away.
 
 - Fill in the right value for `endpoint`.
-  - For Elastic Cloud managed deployments, go to "Manage this deployment" and click on "Copy endpoint".
-  - For Elastic Cloud serverless, click on "Manage project", "View" connection details and copy the value of the "Elasticsearch endpoint".
+  - For Elastic Cloud managed deployments, go to "Manage this deployment" and click on "Copy endpoint". I recommend to put the value in `ELASTIC_HOSTED_ENDPOINT` env var.
+  - For Elastic Cloud serverless, click on "Manage project", "View" connection details and copy the value of the "Elasticsearch endpoint". I recommend to put the value in `ELASTIC_SERVERLESS_ENDPOINT` env var.
 
 - Configure authentication in the Elasticsearch exporter.
   - For Elastic Cloud hosted deployments, you can use the user and password that you obtained when creating the deployment. Use the values as `user` and `password` configuration options of the Elasticsearch exporter.
   - Alternatively, [create an API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) and set the `api_key` configuration option to the "encoded" value of the API key.
 
 - Run the collector, check if it reports errors. Check if the logs are available in Elasticsearch.
+  - Via "Observability" - "Logs"
+  - Via Dev Tools Console:
+    - Go to "Management" - "Dev Tools". Dismiss the help panel on the right-hand side of the screen.
+    - `GET /_data_stream/_stats` to get the list of data streams.
+    - `GET /_cat/indices?v` to get the list of indices.
+    - `GET /logs-generic-default/_search` to get documents from the `logs-generic-default` data stream.
 
 - Change `mapping::mode` to `otel`, re-run the collector, see how the logs structure differs.
 
