@@ -21,7 +21,7 @@ Worth doing before the workshop to save time.
       ```shell
       curl -LO https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.1-darwin-aarch64.tar.gz
       tar zxvf elastic-agent-8.15.*.tar.gz
-      cd elastic-agent-8.15.*
+      cd elastic-agent-8.15.*/
       ```
 
       - Linux (x86_64):
@@ -29,7 +29,7 @@ Worth doing before the workshop to save time.
       ```shell
       curl -LO https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.1-linux-x86_64.tar.gz
       tar zxvf elastic-agent-8.15.*.tar.gz
-      cd elastic-agent-8.15.*
+      cd elastic-agent-8.15.*/
       ```
 
       - Windows (x86_64):
