@@ -1,0 +1,28 @@
+exporters:
+  debug:
+    use_internal_logger: false
+    verbosity: normal
+processors:
+  transform:
+    metric_statements:
+      - context: metric
+        statements:
+          - aggregate_on_attributes("mean", ["state"]) where name == "system.cpu.time"
+receivers:
+  hostmetrics:
+    collection_interval: 5s
+    scrapers:
+      cpu:
+        metrics:
+          system.cpu.utilization:
+            enabled: true
+      load:
+service:
+  pipelines:
+    metrics:
+      exporters:
+        - debug
+      processors:
+        - transform
+      receivers:
+        - hostmetrics

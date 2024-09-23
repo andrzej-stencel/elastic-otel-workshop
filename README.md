@@ -169,11 +169,39 @@ Every scenario has its initial configuration file, e.g. `logs-from-file.yaml`, a
 - When to run as root? This isn't specified in docs, although it would probably be useful (contributions welcome!).
   Most of the scrapers read some files in `/proc`. You need to run as root if the files are only readable by root.
 
-### Modifying telemetry
+### Modifying logs
 
 - Use [Transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md) to modify telemetry.
 
+- [Resource processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourceprocessor/README.md), [Attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md) offer a simple(r) UX to add/remove/modify resource, record attributes.
+
+- Any suggestions of scenarios?
+
+- Some ideas
+  - Extract time from log body
+  - Extract severity from log body
+  - Extract an attribute from log body
+
+### Modifying metrics
+
+- Use [Transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md) to modify telemetry.
+
+- Any suggestions of scenarios?
+
+- Some ideas
+  - Aggregate CPU metrics: [./scenarios/aggregate-cpu-metrics.yaml](./scenarios/aggregate-cpu-metrics.yaml)
+
+### Filtering logs
+
 - Use [Filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md) to filter out telemetry.
+
+- Any suggestions of scenarios?
+
+### Filtering metrics
+
+- Use [Filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md) to filter out telemetry.
+
+- Any suggestions of scenarios?
 
 ### Other
 
