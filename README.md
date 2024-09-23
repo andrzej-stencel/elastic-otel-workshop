@@ -50,7 +50,7 @@ On Windows, use Git Bash or another Linux-emulating shell.
 
    - Alternatively, use a local or any other Elasticsearch instance. Any Elasticsearch instance will do, as long as it is version at least 8.15.0 or higher.
 
-## Basic of the OpenTelemetry Collector
+## Basics of the OpenTelemetry Collector
 
 - [Pipelines, receivers, processors, exporters](https://opentelemetry.io/docs/collector/architecture/)
   - This doesn't mention [connectors](https://opentelemetry.io/docs/collector/building/connector/#what-is-a-connector)
